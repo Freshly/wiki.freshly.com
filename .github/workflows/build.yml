@@ -12,5 +12,5 @@ jobs:
           registry: gcr.io
           project_id: freshly-docker
           image_name: wiki
-          image_tag: $GITHUB_SHA,latest
+          image_tag: ${{ GITHUB_SHA }},latest
           
