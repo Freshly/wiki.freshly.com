@@ -7,6 +7,7 @@ set -o nounset
 set -o pipefail
 # set -o xtrace # Uncomment this line for debugging purpose
 
+echo "creating settings..."
 python3 /opt/freshly/replace.py
 
 exec /opt/bitnami/scripts/mediawiki/entrypoint.sh "$@"

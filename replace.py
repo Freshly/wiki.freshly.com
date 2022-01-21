@@ -22,5 +22,5 @@ for key in replace_env:
     value = replace_env[key]
     template = template.replace(key, value)
 
-with open('/opt/bitnami/mediawiki/LocalSettings.php', mode='w', encoding='utf8') as f:
+with open('/bitnami/mediawiki/LocalSettings.php', mode='w', encoding='utf8') as f:
     f.write(template)
