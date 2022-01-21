@@ -13,4 +13,3 @@ jobs:
           project_id: freshly-docker
           image_name: wiki
           image_tag: ${{ env.GITHUB_SHA }},latest
-          
