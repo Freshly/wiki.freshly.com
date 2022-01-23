@@ -1,0 +1,16 @@
+{
+    "config": {
+        "allow-plugins": true
+    },
+    "extra": {
+        "merge-plugin": {
+            "include": [
+                "extensions/OpenIDConnect/composer.json",
+                "extensions/AWS/composer.json"
+            ]
+        }
+    },
+    "require": {
+        "mediawiki/semantic-media-wiki": "^4.0"
+    }
+}

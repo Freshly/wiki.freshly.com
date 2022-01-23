@@ -1,0 +1,41 @@
+version: '2'
+services:
+  mariadb:
+    image: docker.io/bitnami/mariadb:10.3
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=bn_mediawiki
+      - MARIADB_DATABASE=bitnami_mediawiki
+    volumes:
+      - 'mariadb_data:/bitnami/mariadb'
+
+  mediawiki:
+    build: .
+    command:
+      - /opt/bitnami/scripts/apache/run.sh
+    ports:
+      - '8080:8080'
+      - '443:8443'
+    environment:
+      - MEDIAWIKI_DATABASE_HOST=mariadb
+      - MEDIAWIKI_DATABASE_NAME=bitnami_mediawiki
+      - MEDIAWIKI_DATABASE_PORT_NUMBER=3306
+      - MEDIAWIKI_DATABASE_USER=bn_mediawiki
+      - MEDIAWIKI_EXTERNAL_HTTP_PORT_NUMBER=8080
+      - MARIADB_HOST=mariadb
+      - MARIADB_PORT_NUMBER=3306
+      - MEDIAWIKI_EMAIL=user@example.com
+      - MEDIAWIKI_HOST=localhost:8080
+      - MEDIAWIKI_USERNAME=user
+      - MEDIAWIKI_WIKI_NAME=freshly-wiki
+
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+volumes:
+  mariadb_data:
+    driver: local

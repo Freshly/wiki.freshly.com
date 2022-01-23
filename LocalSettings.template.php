@@ -10,14 +10,17 @@
 # Further documentation for configuration settings may be found at:
 # https://www.mediawiki.org/wiki/Manual:Configuration_settings
 
-# $wgDebugToolbar = true;
 # $wgDebugComments = false;
-# $wgLogQueries = false;
 # $wgDebugDumpSql = false;
-# $wgDevelopmentWarnings  = true;
 # $wgDebugProfiling = false;
 # $wgDebugTimestamps = true;
+# $wgDebugToolbar = true;
+# $wgDevelopmentWarnings  = true;
+# $wgLogQueries = false;
 # $wgResourceLoaderDebug  = false;
+$wgShowDBErrorBacktrace = true;
+$wgShowExceptionDetails = true;
+$wgShowSQLErrors = true;
 
 # Protect against web entry
 if ( !defined( 'MEDIAWIKI' ) ) {

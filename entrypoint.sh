@@ -10,4 +10,16 @@ set -o pipefail
 echo "creating settings..."
 python3 /opt/freshly/replace.py
 
-exec /opt/bitnami/scripts/mediawiki/entrypoint.sh "$@"
+rm -rf /opt/bitnami/mediawiki/extensions
+ln -s /bitnami/mediawiki/extensions /opt/bitnami/mediawiki/extensions
+
+rm -rf /opt/bitnami/mediawiki/skins
+ln -s /bitnami/mediawiki/skins /opt/bitnami/mediawiki/skins
+
+ln -s /bitnami/mediawiki/LocalSettings.php /opt/bitnami/mediawiki/LocalSettings.php
+
+cd /opt/bitnami/mediawiki && composer update
+cd /opt/bitnami/mediawiki && php maintenance/update.php --quick
+
+# exec /opt/bitnami/scripts/mediawiki/entrypoint.sh "$@"
+exec "$@"
