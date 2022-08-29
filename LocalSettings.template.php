@@ -70,8 +70,8 @@ $wgResourceBasePath = $wgScriptPath;
 $wgEnableEmail = true;
 $wgEnableUserEmail = true; # UPO
 
-# Stay logged in for 7 days
-$wgObjectCacheSessionExpiry = 604800;
+# Stay logged in for 30 days
+$wgObjectCacheSessionExpiry = 2592000;
 
 $wgEmergencyContact = 'user@example.com';
 $wgPasswordSender = 'user@example.com';
